@@ -2,14 +2,12 @@
 # This program utilizes the basics of the nltk (NLP) library to create a text summarizer which outputs a summary for a given text
 # (article, story, blog posts etc..).
 
-# from __future__ import print_function
-# import array
-# import string
-# import operator
-import sys
-# print(sys.path)
-
+from __future__ import print_function
+import array
+import string
+import operator
 #Natural Language Processing Libraries
+import sys
 import nltk
 from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk.corpus import stopwords
@@ -100,9 +98,7 @@ class summarize:
 		print (sorted_sent_arr)
 		return sorted_output
 
-def add(a,b):
-  return a+b
-
-a=int(sys.argv[1])
-b=int(sys.argv[2])
-print(add(a,b))
+inputText=sys.argv[1];
+sum1 = summarize()
+summary = sum1.get_summary(inputText, 2)
+print(summary)

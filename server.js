@@ -14,19 +14,17 @@ app.get("/", (req, res) => {
 });
 
 app.post("/summary", (req, res) => {
-  // let { inputText } = req.body;
-  // console.log(inputText);
-  // res.status(200).send("Success");
+  let { inputText } = req.body;
 
   let options = {
-    args: [2, 3]
+    args: inputText
   };
 
   PythonShell.run("main.py", options, (err, result) => {
     if (err) {
       throw err;
     }
-    console.log("results", result);
+    console.log("results", result[1]);
   });
 
   res.status(200).send("Success");
