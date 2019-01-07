@@ -99,6 +99,7 @@ class summarize:
 		return sorted_output
 
 inputText=sys.argv[1];
+numSentences=sys.argv[2];
 sum1 = summarize()
-summary = sum1.get_summary(inputText, 2)
+summary = sum1.get_summary(inputText, int(numSentences))
 print(summary)

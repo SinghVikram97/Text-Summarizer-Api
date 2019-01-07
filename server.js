@@ -15,19 +15,19 @@ app.get("/", (req, res) => {
 
 app.post("/summary", (req, res) => {
   let { inputText } = req.body;
+  let { numSentences } = req.body;
 
   let options = {
-    args: inputText
+    args: [inputText, numSentences]
   };
 
   PythonShell.run("main.py", options, (err, result) => {
     if (err) {
       throw err;
     }
-    console.log("results", result[1]);
+    let summary = result[1];
+    res.json(summary);
   });
-
-  res.status(200).send("Success");
 });
 
 app.listen(4000, () => {
