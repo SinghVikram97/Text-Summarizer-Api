@@ -30,6 +30,6 @@ app.post("/summary", (req, res) => {
   });
 });
 
-app.listen(4000, () => {
-  console.log("Server started at http://localhost:4000");
+app.listen(process.env.PORT, () => {
+  console.log(`Server started at ${process.env.PORT}`);
 });
