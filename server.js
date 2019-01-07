@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const { PythonShell } = require("python-shell");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -13,8 +14,21 @@ app.get("/", (req, res) => {
 });
 
 app.post("/summary", (req, res) => {
-  let { inputText } = req.body;
-  console.log(inputText);
+  // let { inputText } = req.body;
+  // console.log(inputText);
+  // res.status(200).send("Success");
+
+  let options = {
+    args: [2, 3]
+  };
+
+  PythonShell.run("main.py", options, (err, result) => {
+    if (err) {
+      throw err;
+    }
+    console.log("results", result);
+  });
+
   res.status(200).send("Success");
 });
 
