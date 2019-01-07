@@ -21,9 +21,9 @@ app.post("/summary", (req, res) => {
     args: [inputText, numSentences]
   };
 
-  PythonShell.run("setup.py", options, (error, result) => {
-    if (error) {
-      throw error;
+  PythonShell.run("setup.py", options, (err, result) => {
+    if (err) {
+      throw err;
     }
     let summary = result[1];
     res.json(summary);
