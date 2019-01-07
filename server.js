@@ -23,7 +23,7 @@ app.post("/summary", (req, res) => {
 
   PythonShell.run("app.py", options, (error, result) => {
     if (error) {
-      throw errpr;
+      throw error;
     }
     let summary = result[1];
     res.json(summary);
